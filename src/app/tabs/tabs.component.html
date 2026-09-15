@@ -1,0 +1,16 @@
+<div class="tabs-container locked-bottom">
+  <div
+    *ngFor="let tab of tabs"
+    class="tab"
+    [class.expanded]="activeTab === tab"
+    (click)="selectTab(tab)"
+  >
+    <div class="tab-title">
+      {{ tab.title }}
+    </div>
+
+    <div class="tab-content" *ngIf="activeTab === tab">
+      <ng-container *ngComponentOutlet="tab.component"> </ng-container>
+    </div>
+  </div>
+</div>
