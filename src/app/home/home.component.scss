@@ -1,0 +1,22 @@
+$box-width: 1800px;
+$box-height: 900px;
+$box-bg: #1fa06f;
+$box-border: 2px solid #1fa06f;
+
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; // Full viewport height
+}
+
+.profile-box {
+  width: $box-width;
+  height: $box-height;
+  background-color: $box-bg;
+  border: $box-border;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
