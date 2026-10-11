@@ -12,14 +12,18 @@
 .tab {
   width: 280px;
   height: 100px;
-  background: rgb(10, 99, 41);
-  border-top: 5px solid #FFFADA;
-  border-left: 5px solid #FFFADA;
-  border-right: 5px solid #FFFADA;
+  background: #717B45;
+  border-top: 5px solid #fffada;
+  border-left: 5px solid #fffada;
+  border-right: 5px solid #fffada;
   border-radius: 10px 10px 0 0;
   overflow: hidden;
   cursor: pointer;
   transition: opacity 0.3s ease;
+  box-shadow:
+    inset 0 3px 0 0 #040720,
+    inset 2px 0 0 0 #040720,
+    inset -2px 0 0 0 #040720;
 }
 
 .tab.hidden {
@@ -34,8 +38,9 @@
   justify-content: center;
   font-size: 30px;
   font-family: 'Kroftsmann', sans-serif;
-  color: #FFFADA;
-  border-bottom: 5px solid #FFFADA;
+  color: #040720;
+  background-color: #F3B562;
+  box-shadow: inset 0 0 0 2px #040720;
 }
 
 .backdrop {
@@ -53,8 +58,10 @@
   transform: translate(-50%, -50%);
   width: 45rem;
   height: 50rem;
-  background: rgb(10, 99, 41);
-  border: 10px solid #FFFADA;
+  background: #717B45;
+  border: 10px solid #fffada;
+  outline: 2px solid #040720;
+  outline-offset: -12px;
   border-radius: 20px;
   overflow: hidden;
   z-index: 20;
@@ -69,13 +76,36 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
-  border-bottom: 10px solid #FFFADA;
-  color: white;
+  border-bottom: 2px solid #040720;
+  background-color: #F3B562;
 }
 
-.panel-header h2 {
+.panel-title {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: 3.2rem;
+  flex: 1;
+  text-align: center;
+  font-family: 'Kroftsmann', sans-serif;
+}
+
+.close-button {
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 .panel-body {
