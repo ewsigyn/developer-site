@@ -31,7 +31,7 @@ export class TabsComponent {
       component: ComicCollectionComponent,
     },
     {
-      title: 'Contact',
+      title: 'Contact Me',
       component: ContactComponent,
     },
   ];

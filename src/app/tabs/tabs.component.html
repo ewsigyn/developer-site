@@ -14,6 +14,12 @@
 <div *ngIf="activeTab" class="backdrop" (click)="closeTab()"></div>
 
 <div *ngIf="activeTab" class="content-panel">
-  <button class="close-button" (click)="closeTab()">×</button>
-  <ng-container *ngComponentOutlet="activeTab.component"></ng-container>
+  <div class="panel-header">
+    <h2>{{ activeTab.title }}</h2>
+    <button class="close-button" (click)="closeTab()">×</button>
+  </div>
+
+  <div class="panel-body">
+    <ng-container *ngComponentOutlet="activeTab.component"></ng-container>
+  </div>
 </div>

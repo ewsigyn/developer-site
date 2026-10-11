@@ -37,3 +37,10 @@ body {
   height: 100%;
 }
 /* You can add global styles to this file, and also import other style files */
+/* 1. Register the custom font */
+@font-face {
+  font-family: 'Kroftsmann';
+  src: url('assets/fonts/ZIAEachmontDEMO-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

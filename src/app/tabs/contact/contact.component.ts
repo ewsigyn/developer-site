@@ -42,6 +42,7 @@ export class ContactComponent implements OnInit {
       subject: this.form.subject,
       message: this.form.message,
       to_email: 'sigynross@gmail.com',
+      reply_to: this.form.email,
     };
 
     emailjs
@@ -52,7 +53,6 @@ export class ContactComponent implements OnInit {
         this.status = 'success';
         this.cdr.detectChanges();
         this.form = { name: '', email: '', subject: '', message: '' };
-        console.log(this.status)
         setTimeout(() => {
           this.status = 'idle';
           this.form = { name: '', email: '', subject: '', message: '' };
