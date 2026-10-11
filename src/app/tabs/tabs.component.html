@@ -2,15 +2,18 @@
   <div
     *ngFor="let tab of tabs"
     class="tab"
-    [class.expanded]="activeTab === tab"
+    [class.hidden]="activeTab === tab"
     (click)="selectTab(tab)"
   >
     <div class="tab-title">
       {{ tab.title }}
     </div>
-
-    <div class="tab-content" *ngIf="activeTab === tab">
-      <ng-container *ngComponentOutlet="tab.component"> </ng-container>
-    </div>
   </div>
+</div>
+
+<div *ngIf="activeTab" class="backdrop" (click)="closeTab()"></div>
+
+<div *ngIf="activeTab" class="content-panel">
+  <button class="close-button" (click)="closeTab()">×</button>
+  <ng-container *ngComponentOutlet="activeTab.component"></ng-container>
 </div>

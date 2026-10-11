@@ -1,1 +1,68 @@
-<p>Hello, I'm nothing!</p>
+<section class="contact-section">
+  <div class="contact-card">
+    <div class="contact-info">
+      <h2>Contact</h2>
+
+      <div class="info-row">
+        <span class="label">Email</span>
+        <a href="mailto:sigynross@gmail.com">sigynross@gmail.com</a>
+      </div>
+
+      <div class="info-row">
+        <span class="label">GitHub</span>
+        <a href="https://github.com/ewsigyn" target="_blank" rel="noreferrer">
+          github.com/ewsigyn
+        </a>
+      </div>
+
+      <div class="info-row">
+        <span class="label">LinkedIn</span>
+        <a href="https://linkedin.com/in/shannon-ross-4a66a1248" target="_blank" rel="noreferrer">
+          linkedin.com/in/shannon-ross-4a66a1248
+        </a>
+      </div>
+    </div>
+
+    <form class="contact-form" (ngSubmit)="sendEmail()" #contactForm="ngForm">
+      <div class="field">
+        <label for="name">Name</label>
+        <input id="name" type="text" [(ngModel)]="form.name" name="name" required />
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" [(ngModel)]="form.email" name="email" required />
+      </div>
+
+      <div class="field">
+        <label for="subject">Subject</label>
+        <input id="subject" type="text" [(ngModel)]="form.subject" name="subject" required />
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          rows="5"
+          [(ngModel)]="form.message"
+          name="message"
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" [disabled]="isSubmitting || status === 'success'">
+        @if (!isSubmitting && status === 'success') {
+          <span>Message Sent!</span>
+        } @else if (isSubmitting) {
+          <span>Sending...</span>
+        } @else if (!isSubmitting && status === 'idle') {
+          <span>Send Message</span>
+        }
+      </button>
+
+      @if (status === 'error') {
+        <p class="status error">Please complete all fields before sending.</p>
+      }
+    </form>
+  </div>
+</section>
