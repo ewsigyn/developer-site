@@ -1,4 +1,29 @@
-<p>Hello, I'm depressed!</p>
+<div class="comic-collection-container">
+  @if (isLoading) {
+    <div class="loading">
+      <p>Loading comics...</p>
+    </div>
+  }
 
-// grid with each comic in the collection
-// a for each, uses data from AWS database
+  @if (error) {
+    <div class="error">
+      <p>{{ error }}</p>
+    </div>
+  }
+
+  @if (!isLoading && !error) {
+    <div class="comics-grid">
+      @for (comic of comics; track comic.id) {
+        <div class="comic-card">
+          <div class="comic-image-wrapper">
+            <img [src]="comic.image" [alt]="comic.title" class="comic-image" />
+          </div>
+          <div class="comic-info">
+            <h3 class="comic-title">{{ comic.title }}</h3>
+            <p class="comic-year">{{ comic.year }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

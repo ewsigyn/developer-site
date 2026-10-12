@@ -1,7 +1,7 @@
 .contact-section {
   display: flex;
   justify-content: center;
-  padding: 3rem 1rem;
+  padding: 2rem .5rem;
 }
 
 .contact-card {
@@ -9,7 +9,7 @@
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 2rem;
-  background: rgba(12, 71, 36, 0.9);
+  background: #231E21;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   padding: 2rem;
@@ -87,8 +87,8 @@
   border: none;
   border-radius: 10px;
   padding: 0.9rem 1.2rem;
-  background: #d9fbe1;
-  color: #0b3d1f;
+  background: #F3B562;
+  color: #231E21;
   font-weight: 700;
   cursor: pointer;
 }
