@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 interface Comic {
   id: number;
@@ -12,16 +13,21 @@ interface Comic {
 @Component({
   selector: 'app-comic-collection',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './comic-collection.component.html',
   styleUrls: ['./comic-collection.component.scss'],
 })
 export class ComicCollectionComponent implements OnInit {
   comics: Comic[] = [];
+  filteredComics: Comic[] = [];
   isLoading = true;
   error: string | null = null;
+  searchQuery = '';
 
-  constructor(private http: HttpClient, private cdr: ChangeDetectorRef) {}
+  constructor(
+    private http: HttpClient,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngOnInit() {
     this.loadComics();
@@ -31,6 +37,7 @@ export class ComicCollectionComponent implements OnInit {
     this.http.get<Comic[]>('assets/comics.json').subscribe({
       next: (data) => {
         this.comics = data;
+        this.filteredComics = data;
         this.isLoading = false;
         this.cdr.detectChanges();
       },
@@ -41,5 +48,17 @@ export class ComicCollectionComponent implements OnInit {
         this.cdr.detectChanges();
       },
     });
+  }
+
+  onSearch() {
+    if (!this.searchQuery.trim()) {
+      this.filteredComics = this.comics;
+    } else {
+      const query = this.searchQuery.toLowerCase();
+      this.filteredComics = this.comics.filter(
+        (comic) =>
+          comic.title.toLowerCase().includes(query) || comic.year.toString().includes(query),
+      );
+    }
   }
 }
