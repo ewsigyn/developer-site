@@ -1,7 +1,7 @@
 .contact-section {
   display: flex;
   justify-content: center;
-  padding: 2rem .5rem;
+  padding: 2rem 0.5rem;
 }
 
 .contact-card {
@@ -9,7 +9,7 @@
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 2rem;
-  background: #231E21;
+  background: #231e21;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   padding: 2rem;
@@ -39,11 +39,13 @@
   text-transform: uppercase;
   letter-spacing: 0.08rem;
   opacity: 0.8;
+  font-family: 'Kroftsmann', sans-serif;
 }
 
 .contact-info a {
   color: #dfffe8;
   text-decoration: none;
+  font-family: 'Kroftsmann', sans-serif;
 }
 
 .contact-info a:hover {
@@ -64,6 +66,7 @@
 
 .field label {
   font-weight: 600;
+  font-family: 'Kroftsmann', sans-serif;
 }
 
 .field input,
@@ -87,10 +90,11 @@
   border: none;
   border-radius: 10px;
   padding: 0.9rem 1.2rem;
-  background: #F3B562;
-  color: #231E21;
+  background: #f3b562;
+  color: #231e21;
   font-weight: 700;
   cursor: pointer;
+  font-family: 'Kroftsmann', sans-serif;
 }
 
 .contact-form button:disabled {

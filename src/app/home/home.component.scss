@@ -1,7 +1,7 @@
-$box-width: 1800px;
-$box-height: 900px;
-$oval-width: 1600px;
-$oval-height: 800px;
+$box-width: 93.75vw;
+$box-height: 46.88vw;
+$oval-width: 83.33vw;
+$oval-height: 41.67vw;
 
 .home-container {
   display: flex;
@@ -107,7 +107,7 @@ $oval-height: 800px;
     margin: 0;
     font-family: 'Kroftsmann', sans-serif;
     color: white;
-    font-size: 5rem;
+    font-size: 4.17vw;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     letter-spacing: 3.5px;
