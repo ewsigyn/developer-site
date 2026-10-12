@@ -2,57 +2,218 @@
   display: flex;
   align-items: flex-end;
   gap: 10px;
-
-  height: 600px;
-  margin-left: 20px;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 .tab {
-  width: 180px;
-  height: 60px;
-
-  background: white;
-  border: 1px solid #ccc;
+  width: clamp(120px, 16vw, 280px);
+  height: clamp(48px, 5.35vw, 100px);
+  background: #717b45;
+  border-top: 5px solid #fffada;
+  border-left: 5px solid #fffada;
+  border-right: 5px solid #fffada;
   border-radius: 10px 10px 0 0;
-
   overflow: hidden;
   cursor: pointer;
-
   transition:
-    width 0.4s ease,
-    height 0.4s ease;
+    opacity 0.3s ease,
+    transform 0.15s ease;
+  box-shadow:
+    inset 0 3px 0 0 #040720,
+    inset 2px 0 0 0 #040720,
+    inset -2px 0 0 0 #040720;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.tab.expanded {
-  width: 75rem;
-  height: 50rem;
+.tab.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .tab-title {
-  height: 60px;
-
+  height: 3.15vw;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  font-size: 18px;
-  font-weight: bold;
-
-  border-bottom: 1px solid #ccc;
+  font-size: clamp(5px, 1.56vw, 30px);
+  font-family: 'Kroftsmann', sans-serif;
+  color: #040720;
+  background-color: #f3b562;
+  box-shadow: inset 0 0 0 2px #040720;
+  white-space: normal;
+  width: 100%;
 }
 
-.tab-content {
-  height: calc(100% - 60px);
-  padding: 20px;
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  z-index: 15;
+  animation: fadeIn 0.3s ease;
+}
 
+.content-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 37.5vw;
+  height: 41.67vw;
+  background: #717b45;
+  border: 10px solid #fffada;
+  outline: 2px solid #040720;
+  outline-offset: -12px;
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: 20;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 2px solid #040720;
+  background-color: #f3b562;
+}
+
+.panel-title {
+  margin: 0;
+  font-size: clamp(24px, 2.67vw, 3.2rem);
+  flex: 1;
+  text-align: center;
+  font-family: 'Kroftsmann', sans-serif;
+}
+
+.close-button {
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  width: 2.08vw;
+  height: 2.08vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.panel-body {
+  flex: 1;
   overflow: auto;
+  padding: 2rem;
+}
+
+.close-button {
+  position: static;
+  background: transparent;
+  border: none;
+  font-size: clamp(18px, 1.46vw, 28px);
+  color: white;
+  cursor: pointer;
+  padding: 0;
+  width: 2.08vw;
+  height: 2.08vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -55%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .locked-bottom {
   position: fixed;
   bottom: 0;
-  left: 0;
   width: 100%;
-  z-index: 1000; // Keeps the element on top of other content
+  z-index: 10;
 }
 
+@media (max-width: 420px) {
+  .tabs-container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 6px;
+  }
+
+  .tab {
+    width: 24%;
+    min-width: 56px;
+    height: 56px;
+    border-radius: 8px 8px 0 0;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .content-panel {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    transform: none;
+    border-radius: 0;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    animation: none;
+  }
+
+  .panel-header {
+    min-height: 56px;
+    padding: 0 1rem;
+  }
+
+  .panel-title {
+    font-size: clamp(1.6rem, 6vw, 2.5rem);
+  }
+
+  .panel-body {
+    flex: 1;
+    overflow: auto;
+    padding: 1rem;
+  }
+}

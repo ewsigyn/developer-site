@@ -1,1 +1,43 @@
-<p>Hello, I'm depressed!</p>
+<div class="comic-collection-container">
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search by title or year..."
+      [(ngModel)]="searchQuery"
+      (input)="onSearch()"
+      class="search-input"
+    />
+  </div>
+
+  @if (isLoading) {
+    <div class="loading">
+      <p>Loading comics...</p>
+    </div>
+  }
+
+  @if (error) {
+    <div class="error">
+      <p>{{ error }}</p>
+    </div>
+  }
+
+  @if (!isLoading && !error) {
+    <div class="comics-grid">
+      @if (filteredComics.length === 0) {
+        <p class="no-results">No comics found matching your search.</p>
+      } @else {
+        @for (comic of filteredComics; track comic.id) {
+          <div class="comic-card">
+            <div class="comic-image-wrapper">
+              <img [src]="comic.image" [alt]="comic.title" class="comic-image" />
+            </div>
+            <div class="comic-info">
+              <h3 class="comic-title">{{ comic.title }}</h3>
+              <p class="comic-year">{{ comic.year }}</p>
+            </div>
+          </div>
+        }
+      }
+    </div>
+  }
+</div>

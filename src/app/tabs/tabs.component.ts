@@ -17,7 +17,6 @@ interface Tab {
   styleUrls: ['./tabs.component.scss'],
 })
 export class TabsComponent {
-  //turn dynamic/take info from imported component
   tabs: Tab[] = [
     {
       title: 'About Me',
@@ -32,13 +31,17 @@ export class TabsComponent {
       component: ComicCollectionComponent,
     },
     {
-      title: 'Contact',
+      title: 'Contact Me',
       component: ContactComponent,
     },
   ];
   activeTab: Tab | null = null;
 
   selectTab(tab: Tab) {
-    this.activeTab = this.activeTab === tab ? null : tab;
+    this.activeTab = tab;
+  }
+
+  closeTab() {
+    this.activeTab = null;
   }
 }
