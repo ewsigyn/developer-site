@@ -1,3 +1,10 @@
+import { CommonModule } from '@angular/common';
+import { Component, Type } from '@angular/core';
+import { AboutMeComponent } from './about-me/about-me.component';
+import { ComicCollectionComponent } from './comic-collection/comic-collection.component';
+import { ContactComponent } from './contact/contact.component';
+import { ProjectsComponent } from './projects/projects.component';
+
 interface Tab {
   title: string;
   component: Type<any>;
@@ -24,7 +31,7 @@ export class TabsComponent {
       component: ComicCollectionComponent,
     },
     {
-      title: 'Contact',
+      title: 'Contact Me',
       component: ContactComponent,
     },
   ];
